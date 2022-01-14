@@ -15,30 +15,30 @@ yMouse =0
 on = 0
 #commands
 def setstats (x):
-    global q, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed, dead, asdf, asdfg,stats
+    global isquestion, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef, dead, asdf, asdfg , stats
     #base stats
     #hit points
     hp = 10
     #max health
-    h = 10
+    currenthp = 10
     #defense
-    d = 50
+    defense = 50
     #attack
-    a = 10
+    attack = 10
     #accuracy/crit chance
-    ac=80
+    accuracy=80
     #enemies defeated
-    ed=0
+    enemydef=0
     #dead or not checker
     dead=False
     #random stuff to stop bugs
-    q = 0
+    isquestion = False
     asdf = 0
     asdfg = 0
     stats=1
 #making background for the fight
 def fighting (x, y, s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     grass = PhotoImage(file="fight grass.gif")
     grasse = PhotoImage(file="your fight grass.gif")
     grassp = s.create_image(x+600, y+150, image = grass, anchor=N)
@@ -46,26 +46,26 @@ def fighting (x, y, s):
     s.update()
 #spawns player model  
 def mplayer(x, y, s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     player = PhotoImage(file="player.gif")
     playerp = s.create_image(x+250, y+280, image = player, anchor=N)
 #deletes player model
 def delplayer(s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     s.delete(playerp)
 #spawns enemy model    
 def enemyskeleton(x, y, s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     skeleton = PhotoImage(file="skeleton warrior.gif")
     skeletonp = s.create_image(x+600, y+75, image = skeleton, anchor=N)
     s.update()
 #deletes enemy model
 def delenemyskeleton(s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     s.delete(skeletonp)
 #commend made for createing text on screen (saves me lots of time (x, y control cordanits, s is just there form older model of game, and would be big pain to remove, and t is text)    
 def text(x, y, s, t):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     textwindow = s.create_rectangle(6,700, 798, 800, fill ="white", outline = "black", width = 8)
     texts = s.create_text(350, 720, fill="black", font="Comic 10", text=y)
 #deletes text commands text
@@ -73,7 +73,7 @@ def deltext(s):
     s.delete(textwindow, texts)
 #bacially a text that also creates 2 buttons, with can be named with a1, and a2
 def textquestion(x, y, a1, a2, s):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     textwindow = s.create_rectangle(6,700, 798, 800, fill ="white", outline = "black", width = 8)
     texts = s.create_text(350, 720, fill="black", font="Comic 10", text=y)
     button1 = s.create_rectangle(700, 700, 800, 750, fill = "red", outline="black", width = 8)
@@ -83,30 +83,30 @@ def textquestion(x, y, a1, a2, s):
     s.update()
 #deletes text question   
 def deltextquestion(x):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     s.delete( textwindow, texts, button1, button1texts, button2, button2texts)
 
 def mouseClickDetector( event ):
-    global gamestart, on, enemys, q, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global gamestart, on, enemys, q, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     xMouse = event.x
     yMouse = event.y
     #checks if ytou have acually started the game or not
     if gamestart == True:
         #checking to see if new enemy needs to be spawned
-        if xhp < 0 or xhp == 0:
+        if enemyhp < 0 or enemyhp == 0:
             enemys = False
         #checks if you are dead or not be for allowing you to fight more
-        if xhp > 0 and xhp != 0:
+        if enemyhp > 0 and enemyhp != 0:
             fight(0)
         #the elif was bugging out so I needed to seperated it
         if True:
             #q is checking if a question is on screen,  and if soo it will not spawn another one
-            if q == 0 and enemys == True and xhp != 0:
-                q=1
+            if isquestion == False and enemys == True and enemyhp != 0:
+                isquestion = True
                 textquestion(0, "would you like to attack or block", "attack", "block", s)
                 fight(0)
             #making sure enemys are dead before allowing you to contuine
-            elif enemys == False or xhp <= 0:
+            elif enemys == False or enemyhp <= 0:
                 if on == 0:
                     xMouse = 0
                     yMouse = 0
@@ -125,12 +125,12 @@ def mouseClickDetector( event ):
                 
 #it orgilay had more in it but this is whats left, and I just left it
 def intro(x):
-    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     fighting(0,0,s)
     mplayer(0,0,s)
 #spawns enemy, and gives text
 def enemy(x, y):
-    global estats, enemys, asdf, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global estats, enemys, asdf, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     enemys = True
     text(0,("your stats are curret health = "+ str(hp)+ "   max health = "+ str(h)+"   defense = "+ str(d)+ "   attack = "+  str(a)+ "   accuracy = "+ str(ac)), s, 5)
     s.update()
@@ -191,7 +191,7 @@ def delhealthbars(s):
 #if you block it checks if you blocked or not, and then if you have a chance a returning an attack
 #if you don't block checks if the enemy missed, crit, or just did a normal attack 
 def fight(f):
-    global stats, enemys, button3, button3texts, button4, button4texts, q, dead, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed, healthbarswindow, ehealthbarswindow, healthbar, ehealthbar
+    global stats, enemys, button3, button3texts, button4, button4texts, q, dead, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef, healthbarswindow, ehealthbarswindow, healthbar, ehealthbar
     #attack
     print (xMouse, yMouse)
     try:
@@ -522,7 +522,7 @@ def deltextquestionbes(s):
     s.delete(button3, button3texts, button4, button4texts)
 #if you win a battle you can improve a stat. this is the command that does that. 
 def battleend(f):
-    global stats, on, asdfg, button3, button3texts, button4, button4texts, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed
+    global stats, on, asdfg, button3, button3texts, button4, button4texts, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef,
     if hp <= 0:
         text(0,("you lose"), s,5)
     else:
@@ -636,7 +636,7 @@ def startscreenclick(s):
             buttonstarttext = s.create_text(400, 350, fill="black", font="Comic 30", text="start")
 #start the fighting, and summons an enemy, and sets the stats (all he if statments fix one or so bugs)                                   
 def rungame(x):
-    global gamestart, q, healthbarswindow, ehealthbarswindow, healthbar, ehealthbar , enemys, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, h, xh, hp, xhp, d, xd, a, xa, ac, xac, ed, dead
+    global gamestart, q, healthbarswindow, ehealthbarswindow, healthbar, ehealthbar , enemys, grasse, grass, grassep, player, playerp, skeleton, skeletonp, xMouse, yMouse, textwindow, texts, button1, button1texts, button2, button2texts, currenthp, enemycurrenthp, hp, enemyhp, defense, enemydefense, attack, enemyattack, accuracy, enemyaccuracy, enemydef, dead
     s.delete(mainscreenp, buttonstart, buttonstarttext, buttondiff, buttondifftext)
     gamestart = True
     if dead == True:
@@ -677,11 +677,3 @@ s.bind( "<Motion>", getMousePosition)
 s.focus_set()
 s.pack()
 root.mainloop()
-        
-        
-        
-        
-    
-                
-
-
